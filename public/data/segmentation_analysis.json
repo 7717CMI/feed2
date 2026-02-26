@@ -1,28 +1,46 @@
 {
   "Global": {
-    "By Type": {
-      "Sub-Normothermic Perfusion (20–34°C)": {},
-      "Warm or Normothermic Perfusion (35–37°C)": {}
+    "By Additive Type": {
+      "Acacia mearnsii Extract": {},
+      "Schinopsis Extracts (Quebracho)": {
+        "Schinopsis balansae": {},
+        "Schinopsis lorentzii": {}
+      },
+      "Chestnut Extract": {},
+      "Tannic Acid": {},
+      "Methionine": {},
+      "Propionic Acid": {},
+      "Others (Plant-based Flavoring Agents, Butyric Acid, etc.)": {}
     },
-    "By Organ Type": {
-      "Liver": {},
-      "Heart": {},
-      "Lung": {},
-      "Kidney": {},
-      "Others (Pancreas, Small bowel / Intestine, Composite Tissues / Limb Perfusion (emerging use cases))": {}
+    "By Livestock": {
+      "Poultry": {},
+      "Swine": {},
+      "Ruminants (dairy, beef)": {},
+      "Aquaculture": {},
+      "Pet Animals": {},
+      "Others (Equine, etc.)": {}
     },
-    "Application / Use Case": {
-      "Organ Preservation": {},
-      "Viability Assessment": {},
-      "Physiologic Transport": {},
-      "Reconditioning Marginal Organs": {},
-      "Others (Research Use / Protocol development)": {}
+    "By Function": {
+      "Growth Enhancement & Feed Efficiency": {},
+      "Gut Health & Microbiome Modulation": {},
+      "Nutritional Supplementation": {},
+      "Toxin Risk Management": {},
+      "Oxidation Control": {},
+      "pH Regulation & Feed Acidification": {},
+      "Palatability Improvement": {}
     },
-    "By End User": {
-      "Hospitals & Clinics": {},
-      "Specialty Clinic/Centers": {},
-      "Transplant Centers": {},
-      "Others (Research Institutes/Centers, Organ Procurement Organizations, etc.)": {}
+    "By Form": {
+      "Dry Forms": {},
+      "Liquid Forms": {},
+      "Others (Encapsulated / Coated Forms, etc.)": {}
+    },
+    "By Source": {
+      "Natural": {},
+      "Synthetic": {}
+    },
+    "By Distribution Channel": {
+      "Direct": {},
+      "Indirect (via. Distributors)": {}
     },
     "By Region": {
       "North America": {
@@ -53,10 +71,15 @@
         "Mexico": {},
         "Rest of Latin America": {}
       },
-      "Middle East & Africa": {
-        "GCC": {},
+      "Middle East": {
+        "GCC Countries": {},
+        "Israel": {},
+        "Rest of Middle East": {}
+      },
+      "Africa": {
+        "North Africa": {},
         "South Africa": {},
-        "Rest of Middle East & Africa": {}
+        "Central Africa": {}
       }
     }
   }

@@ -26,10 +26,14 @@ export function ComparisonTable({ title, height = 600 }: ComparisonTableProps) {
     // Filter data
     const filtered = filterData(dataset, filters)
 
-    // Get the selected year (use base year or middle of range)
-    const year = filters.yearRange[0] + Math.floor((filters.yearRange[1] - filters.yearRange[0]) / 2)
+    // Use base year (2026) for displayed value and growth/CAGR calculations
+    const year = data.metadata.base_year
     const startYear = filters.yearRange[0]
     const endYear = filters.yearRange[1]
+
+    // Growth % uses fixed base year (2026) to forecast year (2033), same as CAGR
+    const growthStartYear = data.metadata.base_year
+    const growthEndYear = data.metadata.forecast_year
 
     // Helper function to parse CAGR (handles string, number, or null)
     const parseCAGR = (cagr: any): number => {
@@ -49,10 +53,10 @@ export function ComparisonTable({ title, height = 600 }: ComparisonTableProps) {
       segment: record.segment,
       segmentType: record.segment_type,
       currentValue: record.time_series[year] || 0,
-      startValue: record.time_series[startYear] || 0,
-      endValue: record.time_series[endYear] || 0,
-      growth: record.time_series[startYear] > 0 
-        ? (((record.time_series[endYear] || 0) - (record.time_series[startYear] || 0)) / record.time_series[startYear] * 100)
+      startValue: record.time_series[growthStartYear] || 0,
+      endValue: record.time_series[growthEndYear] || 0,
+      growth: record.time_series[growthStartYear] > 0
+        ? (((record.time_series[growthEndYear] || 0) - (record.time_series[growthStartYear] || 0)) / record.time_series[growthStartYear] * 100)
         : 0,
       cagr: parseCAGR(record.cagr),
       marketShare: record.market_share || 0,
@@ -148,8 +152,8 @@ export function ComparisonTable({ title, height = 600 }: ComparisonTableProps) {
     )
   }
 
-  const year = filters.yearRange[0] + Math.floor((filters.yearRange[1] - filters.yearRange[0]) / 2)
-  const valueUnit = filters.dataType === 'value' 
+  const year = data.metadata.base_year
+  const valueUnit = filters.dataType === 'value'
     ? `${data.metadata.currency} ${data.metadata.value_unit}`
     : data.metadata.volume_unit
 

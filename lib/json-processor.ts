@@ -1152,9 +1152,9 @@ async function processSegmentTypeAsync(
           cagr = data.CAGR
         }
       } else {
-        // Calculate CAGR from base year (2023) to forecast year
-        const cagrStartYear = allYears[0] + 4 // Base year = 2023 for 2019-2031 data
-        const cagrEndYear = allYears[allYears.length - 1]
+        // Calculate CAGR from base year (2026) to forecast year (2033)
+        const cagrStartYear = Math.min(...allYears) + 5 // 2026 for 2021-2033 data
+        const cagrEndYear = Math.max(...allYears) // 2033
         const startVal = timeSeries[cagrStartYear] || 0
         const endVal = timeSeries[cagrEndYear] || 0
         const numYears = cagrEndYear - cagrStartYear
@@ -1472,9 +1472,9 @@ export async function processJsonDataAsync(
     
     // Build metadata
     const metadata: Metadata = {
-      market_name: 'Normothermic Machine Perfusion Market',
+      market_name: 'Natural Feed Additives Market',
       market_type: 'Market Analysis',
-      industry: 'Healthcare & Pharmaceuticals',
+      industry: 'Agriculture & Animal Nutrition',
       years: allYears,
       start_year: startYear,
       base_year: baseYear,
@@ -1483,7 +1483,7 @@ export async function processJsonDataAsync(
       forecast_years: allYears.filter(y => y > historicalEndYear),
       currency: 'USD',
       value_unit: 'Million',
-      volume_unit: 'Million Units',
+      volume_unit: 'Metric Tons',
       has_value: valueRecords.length > 0,
       has_volume: volumeRecords.length > 0,
     }
