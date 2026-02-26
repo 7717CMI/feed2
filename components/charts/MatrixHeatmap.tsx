@@ -158,7 +158,8 @@ export function MatrixHeatmap({ title, height = 600 }: MatrixHeatmapProps) {
 
   const formatValue = (value: number) => {
     if (value === 0) return '-'
-    return value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    if (value >= 1000) return `${Math.floor(value / 100) / 10}K`
+    return value.toFixed(1)
   }
 
   const [startYear, endYear] = filters.yearRange
