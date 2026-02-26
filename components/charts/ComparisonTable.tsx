@@ -47,6 +47,9 @@ export function ComparisonTable({ title, height = 600 }: ComparisonTableProps) {
       return 0
     }
 
+    // Calculate share from filtered records at base year
+    const filteredTotal = filtered.reduce((sum, r) => sum + (r.time_series[year] || 0), 0)
+
     // Transform to table format
     return filtered.map(record => ({
       geography: record.geography,
@@ -59,7 +62,7 @@ export function ComparisonTable({ title, height = 600 }: ComparisonTableProps) {
         ? (((record.time_series[growthEndYear] || 0) - (record.time_series[growthStartYear] || 0)) / record.time_series[growthStartYear] * 100)
         : 0,
       cagr: parseCAGR(record.cagr),
-      marketShare: record.market_share || 0,
+      marketShare: filteredTotal > 0 ? ((record.time_series[year] || 0) / filteredTotal) * 100 : 0,
       sparkline: Object.entries(record.time_series)
         .filter(([y]) => parseInt(y) >= startYear && parseInt(y) <= endYear)
         .sort(([a], [b]) => parseInt(a) - parseInt(b))
